@@ -2,29 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
+    .normal {
+        @apply bg-normal;
+    }
+    .fighting {
+        @apply bg-fighting;
+    }
+    .flying {
+        @apply bg-flying;
+    }
+    .poison {
+        @apply bg-poison;
+    }
+    .ground {
+        @apply bg-ground;
+    }
+    .rock {
+        @apply bg-rock;
+    }
+    .ghost {
+        @apply bg-ghost;
+    }
+    .steel {
+        @apply bg-steel;
+    }
     .grass {
         @apply bg-grass;
     }
     .fire {
         @apply bg-fire;
     }
-    .fighting {
-        @apply bg-grass;
-    }
-    .poison {
-        @apply bg-fire;
-    }
     .bug {
-        @apply bg-grass;
+        @apply bg-bug;
+    }
+    .electric {
+        @apply bg-electric;
+    }
+    .psychic {
+        @apply bg-psychic;
     }
     .water {
-        @apply bg-fire;
+        @apply bg-water;
     }
     .ice {
-        @apply bg-grass;
+        @apply bg-ice;
     }
     .fairy {
-        @apply bg-fire;
+        @apply bg-fairy;
+    }
+    .dragon {
+        @apply bg-gradient-to-b from-fromDragon to-toDragon;
+    }
+    .dark {
+        @apply bg-dark;
     }
 }
 

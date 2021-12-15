@@ -3,43 +3,52 @@ import { useNavigate } from 'react-router-dom';
 
 export function SetPokemonDetails(props) {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
+    const [pokemonsDetails, setPokemonsDetails] = useState([]);
+
 
     function goToPokemonInformations() {
         navigate(`/pokemonsInformation/${pokemonsDetails.id}`)
     }
 
-    const [pokemonsDetails, setPokemonsDetails] = useState([]);
-
-
     useEffect(() => {
         fetch(props.url)
             .then(response => response.json())
             .then((data) => {
-                console.log(data)
                 setPokemonsDetails({
                     id: data.id,
                     name: data.name,
-                    type: data.types,
+                    types: data.types,
                     img: data.sprites.other.home.front_default
-                })
+                });
+                setIsLoading(false);
             });
     }, [props.url])
-    console.log('pokemonsDetails', pokemonsDetails)
 
     return (
-        <div className='shadow-md text-center hover:brightness-50'>
-            <h1 className='pt-5'>
-                #{pokemonsDetails.id}{" "}
+        <>
+            {
+                isLoading ? '' :
+                    <div className='shadow-md text-center hover:brightness-50'>
+                        <h1 className='pt-5'>
+                            <div className='flex p-3' >
+                                <div className={`bg-${pokemonsDetails.types[0]?.type.name} rounded p-1`}>
 
-                {pokemonsDetails.name}
-            </h1>
-            <img className=" w-100 h-auto" src={pokemonsDetails.img} alt={pokemonsDetails.name}>
-            </img>
-            <div>
-                <button className='p-1 text-white rounded-full bg-black hover:brightness-125' onClick={() => { goToPokemonInformations() }}>
-                    Pokémon Information
-                </button>
-            </div>
-        </div >
+                                    # {pokemonsDetails.id}
+                                </div>
+                            </div>
+                        </h1>
+                        <div>
+                            <button className='p-1 rounded-full' onClick={() => { goToPokemonInformations() }}>
+                                <img className=" w-100 h-auto" src={pokemonsDetails.img} alt={pokemonsDetails.name}>
+                                </img>
+                                <div>
+                                    {pokemonsDetails.name}
+                                </div>
+                            </button>
+                        </div>
+                    </div >
+            }
+        </>
     )
 }

@@ -15,7 +15,7 @@ export function SetPokemonsData() {
 
     return (
         <>
-            <img src='/assets/img/wallpaper_pokemon.jpg'>
+            <img src='/assets/img/wallpaper_pokemon.jpg' alt="pokemon wallpaper">
             </img>
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
